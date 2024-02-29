@@ -1,5 +1,19 @@
-# Created by https://www.toptal.com/developers/gitignore/api/windows,linux,macos,visualstudiocode,python,venv,virtualenv,dotenv
-# Edit at https://www.toptal.com/developers/gitignore?templates=windows,linux,macos,visualstudiocode,python,venv,virtualenv,dotenv
+# Created by https://www.toptal.com/developers/gitignore/api/venv,linux,macos,dotenv,python,windows,virtualenv,visualstudiocode,audio
+# Edit at https://www.toptal.com/developers/gitignore?templates=venv,linux,macos,dotenv,python,windows,virtualenv,visualstudiocode,audio
+
+### Audio ###
+*.aif
+*.iff
+*.m3u
+*.m4a
+*.mid
+*.mp3
+*.mpa
+*.ra
+*.wav
+*.wma
+*.ogg
+*.flac
 
 ### dotenv ###
 .env
@@ -284,4 +298,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/windows,linux,macos,visualstudiocode,python,venv,virtualenv,dotenv
+# End of https://www.toptal.com/developers/gitignore/api/venv,linux,macos,dotenv,python,windows,virtualenv,visualstudiocode,audio
