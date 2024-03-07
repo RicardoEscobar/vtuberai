@@ -49,6 +49,7 @@ async def on_message(msg: ChatMessage):
     # save the message to a JSON file
     data = {
         "timestamp": datetime.datetime.now().isoformat(),
+        "room": msg.room.name,
         "user": msg.user.name,
         "message": msg.text,
         "type": "message",
@@ -65,7 +66,8 @@ async def on_sub(sub: ChatSub):
     )
     data = {
         "timestamp": datetime.datetime.now().isoformat(),
-        "user": sub.user.name,
+        "room": sub.room.name,
+        "plan": sub.sub_plan,
         "message": sub.sub_message,
         "type": "subscription",
     }
@@ -81,9 +83,10 @@ async def test_command(cmd: ChatCommand):
         data = {
             "timestamp": datetime.datetime.now().isoformat(),
             "user": cmd.user.name,
-            "message": cmd.parameter,
+            "parameter": cmd.parameter,
             "type": "command",
         }
+        add_to_json(data, f"command_{cmd.room.name}.json")
 
 
 # this is where we set up the bot
