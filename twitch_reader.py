@@ -51,8 +51,9 @@ async def on_message(msg: ChatMessage):
         "timestamp": datetime.datetime.now().isoformat(),
         "user": msg.user.name,
         "message": msg.text,
+        "type": "message",
     }
-    add_to_json(data, f"{msg.room.name}.json")
+    add_to_json(data, f"chat_{msg.room.name}.json")
 
 
 # this will be called whenever someone subscribes to a channel
@@ -62,6 +63,13 @@ async def on_sub(sub: ChatSub):
         f"  Type: {sub.sub_plan}\\n"
         f"  Message: {sub.sub_message}"
     )
+    data = {
+        "timestamp": datetime.datetime.now().isoformat(),
+        "user": sub.user.name,
+        "message": sub.sub_message,
+        "type": "subscription",
+    }
+    add_to_json(data, f"sub_{sub.room.name}.json")
 
 
 # this will be called whenever the !reply command is issued
@@ -70,6 +78,12 @@ async def test_command(cmd: ChatCommand):
         await cmd.reply("you did not tell me what to reply with")
     else:
         await cmd.reply(f"{cmd.user.name}: {cmd.parameter}")
+        data = {
+            "timestamp": datetime.datetime.now().isoformat(),
+            "user": cmd.user.name,
+            "message": cmd.parameter,
+            "type": "command",
+        }
 
 
 # this is where we set up the bot
