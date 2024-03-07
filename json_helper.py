@@ -28,6 +28,12 @@ def add_to_json(data, filename) -> Path:
     json_data.append(data)
     save_to_json(json_data, filename)
 
+def load_last_messages(filename, n=5) -> List[Dict]:
+    """Load the last n messages from a JSON file."""
+    with open(filename, "r", encoding="utf-8") as file:
+        json_data = loads(file.read())
+    return json_data[-n:]
+
 
 if __name__ == "__main__":
     test_data = [{
