@@ -19,7 +19,7 @@ load_dotenv()
 APP_ID = os.getenv("TWITCH_APP_ID")
 APP_SECRET = os.getenv("TWITCH_APP_SECRET")
 USER_SCOPE = [AuthScope.CHAT_READ, AuthScope.CHAT_EDIT]
-TARGET_CHANNEL = "RicardoEscobar"
+TARGET_CHANNEL = "snuffy"
 
 
 async def twitch_example():
@@ -45,7 +45,7 @@ async def on_ready(ready_event: EventData):
 
 # this will be called whenever a message in a channel was send by either the bot OR another user
 async def on_message(msg: ChatMessage):
-    print(f"in {msg.room.name}, {msg.user.name} said: {msg.text}")
+    print(f"{msg.room.name}:{msg.user.name}: {msg.text}")
     # save the message to a JSON file
     data = {
         "timestamp": datetime.datetime.now().isoformat(),
