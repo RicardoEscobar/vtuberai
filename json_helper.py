@@ -8,7 +8,6 @@ def save_to_json(data, filename) -> Path:
     """Save the data to a JSON file."""
     with open(filename, "w", encoding="utf-8") as file:
         file.write(dumps(data, indent=4))
-    print(f"Saved the data to {filename}")
     return Path(filename).resolve()
 
 def load_from_json(filename) -> List[Dict]:
