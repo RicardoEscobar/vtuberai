@@ -16,11 +16,16 @@ from json_helper import add_to_json
 
 # load the environment variables
 load_dotenv()
+
+# set up the twitch API
 APP_ID = os.getenv("TWITCH_APP_ID")
 APP_SECRET = os.getenv("TWITCH_APP_SECRET")
 USER_SCOPE = [AuthScope.CHAT_READ, AuthScope.CHAT_EDIT]
 TARGET_CHANNEL = "snuffy"
-
+AUDIO_PATH = "data/audio"
+CHAT_PATH = "data/chat"
+SUB_PATH = "data/sub"
+COMMAND_PATH = "data/command"
 
 async def twitch_example():
     # initialize the twitch instance, this will by default also create a app authentication for you TWITCH_APP_ID and TWITCH_APP_SECRET
@@ -54,7 +59,7 @@ async def on_message(msg: ChatMessage):
         "message": msg.text,
         "type": "message",
     }
-    add_to_json(data, f"chat_{msg.room.name}.json")
+    add_to_json(data, f"{CHAT_PATH}/{msg.room.name}.json")
 
 
 # this will be called whenever someone subscribes to a channel
@@ -71,7 +76,7 @@ async def on_sub(sub: ChatSub):
         "message": sub.sub_message,
         "type": "subscription",
     }
-    add_to_json(data, f"sub_{sub.room.name}.json")
+    add_to_json(data, f"{SUB_PATH}/{sub.room.name}.json")
 
 
 # this will be called whenever the !reply command is issued
@@ -86,7 +91,7 @@ async def test_command(cmd: ChatCommand):
             "parameter": cmd.parameter,
             "type": "command",
         }
-        add_to_json(data, f"command_{cmd.room.name}.json")
+        add_to_json(data, f"{COMMAND_PATH}/{cmd.room.name}.json")
 
 
 # this is where we set up the bot
