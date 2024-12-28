@@ -302,3 +302,6 @@ $RECYCLE.BIN/
 
 # json files
 *.json
+
+# data
+data/
