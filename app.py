@@ -68,7 +68,7 @@ if __name__ == "__main__":
     # for chunk in stream_text:
     #     if chunk.choices[0].delta.content is not None:
     #         print(chunk.choices[0].delta.content, end="")
-    streaming = stream_audio(stream_poem, "Feliz navidad 2024.")
+    streaming = stream_audio(stream_poem, "Que son los vtubers?")
     bytes = stream(streaming)
 
     # Save the poem to mp3 file
